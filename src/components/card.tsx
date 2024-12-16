@@ -14,7 +14,7 @@ interface CardegProps {
 }
 
 const Cardeg: FC<CardegProps> = (prpos) => {
-  const { category, description, id, image, price, title } = prpos.product
+  const {image,  title } = prpos.product
 
   return (
     <>
