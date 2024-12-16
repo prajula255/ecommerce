@@ -14,7 +14,7 @@ interface CardegProps {
 }
 
 const Cardeg: FC<CardegProps> = (prpos) => {
-  const {image,  title } = prpos.product
+  const { image, title } = prpos.product
 
   return (
     <>
@@ -29,7 +29,7 @@ const Cardeg: FC<CardegProps> = (prpos) => {
           {/* <Card.Link href="#">Add to Cart</Card.Link>
           <Card.Link href="#">Add to favourite</Card.Link> */}
           <Button variant="primary" style={{ marginRight: '10px' }}>Add to cart </Button>
-          <Button variant="primary">Buy now </Button>
+          <Button variant="primary">Add to favourite </Button>
 
         </Card.Body>
       </Card>

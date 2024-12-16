@@ -43,7 +43,7 @@ function App() {
   return (
     <>
       <OffcanvasExample />
-      <div className='d-flex flex-wrap flex-row container'>
+      <div className='d-flex flex-wrap justify-content-around flex-row container'>
         {
           product.length > 0 ?
             product.map((item, index) => (

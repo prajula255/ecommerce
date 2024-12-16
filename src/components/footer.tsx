@@ -8,7 +8,7 @@ const FooterC: FC<FooterCProps> = ({ }) => {
     return (
         <>
             <footer>
-                <div className='d-flex bg-dark text-light justify-content-evenly p-3 gap-5 '>
+                <div className='d-flex flex-wrap bg-dark text-light justify-content-evenly p-3 gap-5 '>
                     <div>
                         <h6>ABOUT</h6>
 
