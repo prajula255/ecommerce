@@ -43,7 +43,7 @@ const FooterC: FC<FooterCProps> = ({ }) => {
 
                     <div>
                         <h6>Mail us:</h6>
-                        <p>Flipkart internet private limited,Bengaluru</p>
+                        <p>Ekart internet private limited,Bengaluru</p>
                     </div>
                 </div>
             </footer>
