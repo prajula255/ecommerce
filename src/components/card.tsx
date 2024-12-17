@@ -14,7 +14,7 @@ interface CardegProps {
 }
 
 const Cardeg: FC<CardegProps> = (props) => {
-  const { category,description,id, image,price, title } = props.product
+  const { category,description,id,image,price, title } = props.product
 
   return (
     <>
@@ -23,9 +23,9 @@ const Cardeg: FC<CardegProps> = (props) => {
         <Card.Body>
           <Card.Title>{title}</Card.Title>
 
-          {/* <Card.Text>
-            trendy
-          </Card.Text> */}
+          <Card.Text>
+            
+          </Card.Text>
           {/* <Card.Link href="#">Add to Cart</Card.Link>
           <Card.Link href="#">Add to favourite</Card.Link> */}
 
