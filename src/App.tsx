@@ -7,13 +7,12 @@ import FooterC from './components/footer'
 function App() {
   const [product, setProduct] = useState([])
   const [isMobile, setIsMobile] = useState(false)
+  const [cartDetails, setCartDetails] = useState<string[]>([])
 
   useEffect(() => {
     fetch('https://fakestoreapi.com/products')
       .then(res => res.json())
       .then(json => setProduct(json))
-
-
   }, [])
 
   useEffect(() => {
@@ -48,12 +47,12 @@ function App() {
           product.length > 0 ?
             product.map((item, index) => (
               <div className=" p-2" >
-                <Cardeg key={index + "product"} product={item} />
+                <Cardeg key={index + "product"} product={item} setCartDetails={setCartDetails} />
               </div>
             )) :
             (
               <div>
-                <p>nothing to show</p>
+                <p>no products available</p>
               </div>
             )
         }

@@ -32,7 +32,7 @@ const NavBar: FC<NavBarProps> = ({ }) => {
 
           <NavDropdown
             title=" Account"
-            id={`offcanvasNavbarDropdown-expand-${false}`}
+            id={`offcanvasNavbarDropdown-expand-${false}`} style={{ fontWeight: 'bolder' }}
           >
             <NavDropdown.Item href="#action1">My Profile</NavDropdown.Item>
             <NavDropdown.Divider />
@@ -72,21 +72,14 @@ const NavBar: FC<NavBarProps> = ({ }) => {
             <NavDropdown.Item href="#action10">
               Logout
             </NavDropdown.Item>
-
-            <Nav className="justify-content-end flex-grow-1 pe-3">
-              <Nav.Link href="#action1"></Nav.Link>
-              <Nav.Link href="#action2"></Nav.Link>
-              <Nav.Link href="#action2"></Nav.Link>
-
-            </Nav>
           </NavDropdown>
 
 
-          <Nav className="justify-content-end flex-grow-1" style={{ marginLeft: '50px' }}>
+          <Nav className="justify-content-end flex-grow-1" style={{ marginLeft: '50px', fontWeight: 'bolder' }}>
             <Nav.Link href="#cart">Cart</Nav.Link>
           </Nav>
 
-          <Nav className="justify-content-end flex-grow-1" style={{ marginLeft: '10px' }}>
+          <Nav className="justify-content-end flex-grow-1" style={{ marginLeft: '10px', fontWeight: 'bolder' }}>
             <Nav.Link href="#sell">Become a seller</Nav.Link>
           </Nav>
 
@@ -147,25 +140,7 @@ const NavBar: FC<NavBarProps> = ({ }) => {
                 <NavDropdown.Item href="#action10">
                   Logout
                 </NavDropdown.Item>
-                <NavDropdown.Divider />
-
-                <Nav className="justify-content-end flex-grow-1 pe-3">
-                  <Nav.Link href="#action1"></Nav.Link>
-                  <Nav.Link href="#action2"></Nav.Link>
-                  <Nav.Link href="#action2"></Nav.Link>
-
-                </Nav>
               </NavDropdown>
-
-              {/* <Form className="d-flex">
-                <Form.Control
-                  type="search"
-                  placeholder="Search"
-                  className="me-2"
-                  aria-label="Search"
-                />
-                <Button variant="outline-success">Search</Button>
-              </Form> */}
 
             </Offcanvas.Body>
           </Navbar.Offcanvas>

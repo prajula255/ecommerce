@@ -4,31 +4,42 @@ import { Button } from 'react-bootstrap';
 
 interface CardegProps {
   product: {
-    category: string,
-    description: string,
-    id: number,
-    image: string,
-    price: number,
-    title: string
-  }
+    category: string;
+    description: string;
+    id: number;
+    image: string;
+    price: number;
+    title: string;
+  };
+  setCartDetails: (value: any) => void;
 }
 
+// function to truncate or limit title length
+
+const truncateTitle = (title: string, maxLength: number): string => {
+  return title.length > maxLength ? title.substring(0, maxLength) + '...' : title;
+};
+
+
 const Cardeg: FC<CardegProps> = (props) => {
-  const { category,description,id,image,price, title } = props.product
+  const { image, title } = props.product
+
+  const add = () => {
+    props.setCartDetails(props.product)
+  }
 
   return (
     <>
       <Card style={{ width: '18rem' }}>
         <Card.Img variant="top" src={image} style={{ height: '200px', width: '100%', padding: '10px' }} />
         <Card.Body>
-          <Card.Title>{title}</Card.Title>
+          {/* <Card.Title>{title}</Card.Title> */}
 
+          <Card.Title style={{ fontSize: '16px' }}>
+            {truncateTitle(title, 20)}
+          </Card.Title>
           <Card.Text>
-            
           </Card.Text>
-          {/* <Card.Link href="#">Add to Cart</Card.Link>
-          <Card.Link href="#">Add to favourite</Card.Link> */}
-
           <div style={{ display: 'flex', gap: '10px' }}>
             <Button variant="primary" >Add to cart </Button>
             <Button variant="primary">Add to favourite </Button>
