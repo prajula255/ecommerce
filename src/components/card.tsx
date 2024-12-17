@@ -3,14 +3,7 @@ import { FC } from 'react';
 import { Button } from 'react-bootstrap';
 
 interface CardegProps {
-  product: {
-    category: string;
-    description: string;
-    id: number;
-    image: string;
-    price: number;
-    title: string;
-  };
+  product: any,
   setCartDetails: (value: any) => void;
 }
 

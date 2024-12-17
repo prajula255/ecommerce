@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react'
 import './App.css'
-import OffcanvasExample from './components/navbar'
-import Cardeg from './components/card'
-import FooterC from './components/footer'
+import { BrowserRouter, Routes,Route } from 'react-router-dom'
+import EkartPage from './pages/ekartpage'
 
 function App() {
   const [product, setProduct] = useState([])
@@ -41,25 +40,11 @@ function App() {
 
   return (
     <>
-      <OffcanvasExample />
-      <div className='d-flex flex-wrap justify-content-around flex-row container'>
-        {
-          product.length > 0 ?
-            product.map((item, index) => (
-              <div className=" p-2" >
-                <Cardeg key={index + "product"} product={item} setCartDetails={setCartDetails} />
-              </div>
-            )) :
-            (
-              <div>
-                <p>no products available</p>
-              </div>
-            )
-        }
-      </div>
-      <footer> <FooterC /></footer>
-
-    </>
+<BrowserRouter>
+<Routes>
+  <Route path="/" element={<EkartPage products={product} setCartDetails={setCartDetails} />}/>
+  </Routes></BrowserRouter>    
+     </>
   )
 }
 
