@@ -17,9 +17,9 @@ const truncateTitle = (title: string, maxLength: number): string => {
 const Cardeg: FC<CardegProps> = (props) => {
   const { image, title } = props.product
 
-  const add = () => {
-    props.setCartDetails(props.product)
-  }
+  // const add = () => {
+  //   props.setCartDetails(props.product)
+  // }
 
   return (
     <>
