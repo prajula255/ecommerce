@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react'
-import './App.css'
-import { BrowserRouter, Routes,Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import EkartPage from './pages/ekartpage'
-
+import CartPage from './pages/cartpage'
 function App() {
   const [product, setProduct] = useState([])
   const [isMobile, setIsMobile] = useState(false)
-  const [cartDetails, setCartDetails] = useState<string[]>([])
+  const [cartDetails, setCartDetails] = useState<any>([])
 
   useEffect(() => {
     fetch('https://fakestoreapi.com/products')
@@ -40,12 +39,25 @@ function App() {
 
   return (
     <>
-<BrowserRouter>
-<Routes>
-  <Route path="/" element={<EkartPage products={product} setCartDetails={setCartDetails} />}/>
-  </Routes></BrowserRouter>    
-     </>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<EkartPage products={product} setCartDetails={setCartDetails} />} />
+
+
+          <Route
+            path="/cart"
+            element={<CartPage cartDetails={cartDetails} />}
+          />
+        </Routes></BrowserRouter>
+    </>
   )
 }
 
-export default App;    
+export default App;
+
+
+
+
+
+
+

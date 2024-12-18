@@ -30,6 +30,7 @@ const NavBar: FC<NavBarProps> = ({ }) => {
           </Form>
 
 
+          <i className="fa-solid fa-user" ></i>
           <NavDropdown
             title=" Account"
             id={`offcanvasNavbarDropdown-expand-${false}`} style={{ fontWeight: 'bolder' }}
@@ -76,11 +77,11 @@ const NavBar: FC<NavBarProps> = ({ }) => {
 
 
           <Nav className="justify-content-end flex-grow-1" style={{ marginLeft: '50px', fontWeight: 'bolder' }}>
-            <Nav.Link href="#cart">Cart</Nav.Link>
+            <Nav.Link href="#cart"><i className="fa-solid fa-cart-shopping"></i>Cart</Nav.Link>
           </Nav>
 
           <Nav className="justify-content-end flex-grow-1" style={{ marginLeft: '10px', fontWeight: 'bolder' }}>
-            <Nav.Link href="#sell">Become a seller</Nav.Link>
+            <Nav.Link href="#sell"><i className="fa-solid fa-store"></i>Become a seller</Nav.Link>
           </Nav>
 
 

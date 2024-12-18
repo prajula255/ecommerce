@@ -9,7 +9,7 @@ interface EkartPageProps {
 }
 
 const EkartPage: FC<EkartPageProps> = ({products,setCartDetails}) => {
-    
+
   return (
     <>
        <NavBar />
@@ -36,3 +36,10 @@ const EkartPage: FC<EkartPageProps> = ({products,setCartDetails}) => {
 };
 
 export default EkartPage;
+
+
+
+
+
+
+
