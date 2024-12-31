@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 const SearchResults: FC = () => {
     const location = useLocation();
     const query = new URLSearchParams(location.search).get('query'); // Get search query from URL
-    const [products, setProducts] = useState<any[]>([]); // State for storing products
+    const [, setProducts] = useState<any[]>([]); // State for storing products
     const [filteredProducts, setFilteredProducts] = useState<any[]>([]); // State for filtered products
     const [loading, setLoading] = useState<boolean>(false); // Loading state
     const [error, setError] = useState<string | null>(null); // Error state
@@ -26,7 +26,7 @@ const SearchResults: FC = () => {
                     setFilteredProducts(filtered); // Set filtered products
                     setLoading(false); // Set loading to false after data is fetched
                 })
-                .catch((err) => {
+                .catch(() => {
                     setError('Failed to fetch products. Please try again later.');
                     setLoading(false);
                 });
