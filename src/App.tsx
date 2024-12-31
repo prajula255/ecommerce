@@ -71,6 +71,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import EkartPage from './pages/ekartpage';
 import CartPage from './pages/cartpage';
 import CartDetails from './pages/cartdet';
+import SearchResults from './pages/search';
 function App() {
   const [products, setProducts] = useState([]);
   const [isMobile, setIsMobile] = useState(false);
@@ -111,12 +112,19 @@ function App() {
             element={<EkartPage products={products} setCartDetails={setCartDetails} />}
           />
 
+
+          <Route path="/cart" element={<CartPage />} />
+          <Route path="/cart-details" element={<CartDetails />} />
+          <Route path="/search" element={<SearchResults />} />
           {/* Cart page displaying all items added */}
-          <Route path="/cart" element={<CartPage cartDetails={cartDetails} />} />
+          {/* <Route path="/cart" element={<CartPage cartDetails={cartDetails} />} /> */}
 
           {/* Product details page for a specific cart item */}
-          <Route path="/cart-details" element={<CartDetails />} />
+          {/* <Route path="/cart-details" element={<CartDetails />} /> */}
         </Routes>
+
+
+
       </BrowserRouter>
     </>
   );
