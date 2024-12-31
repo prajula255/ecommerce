@@ -75,7 +75,7 @@ import SearchResults from './pages/search';
 function App() {
   const [products, setProducts] = useState([]);
   const [isMobile, setIsMobile] = useState(false);
-  const [cartDetails, setCartDetails] = useState<any>([]);
+  const [, setCartDetails] = useState<any>([]);
   useEffect(() => {
     fetch('https://fakestoreapi.com/products')
       .then((res) => res.json())
