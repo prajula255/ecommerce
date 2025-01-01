@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import EkartPage from './pages/ekartpage';
+import EkartPage from './pages/homepage';
 import CartPage from './pages/cartpage';
 import CartDetails from './pages/cartdet';
 import SearchResults from './pages/search';
