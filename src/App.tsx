@@ -1,70 +1,3 @@
-// import { useEffect, useState } from 'react'
-// import { BrowserRouter, Routes, Route } from 'react-router-dom'
-// import EkartPage from './pages/ekartpage'
-// import CartPage from './pages/cartpage'
-// function App() {
-//   const [product, setProduct] = useState([])
-//   const [isMobile, setIsMobile] = useState(false)
-//   const [cartDetails, setCartDetails] = useState<any>([])
-
-//   useEffect(() => {
-//     fetch('https://fakestoreapi.com/products')
-//       .then(res => res.json())
-//       .then(json => setProduct(json))
-//   }, [])
-
-//   useEffect(() => {
-//     console.log(product);
-
-//   }, [product])
-
-
-//   useEffect(() => {
-//     const handleResize = () => {
-//       setIsMobile(window.innerWidth <= 768);
-//     };
-//     handleResize();
-
-//     window.addEventListener('resize', handleResize);
-
-//     return () => {
-//       window.removeEventListener('resize', handleResize);
-//     };
-//   }, []);
-
-//   useEffect(() => {
-//     console.log('Is Mobile:', isMobile);
-//   }, [isMobile]);
-
-
-//   return (
-//     <>
-//       <BrowserRouter>
-//         <Routes>
-//           <Route path="/" element={<EkartPage products={product} setCartDetails={setCartDetails} />} />
-
-
-//           <Route
-//             path="/cart"
-//             element={<CartPage cartDetails={cartDetails} />}
-//           />
-//         </Routes></BrowserRouter>
-//     </>
-//   )
-// }
-
-// export default App;
-
-
-
-
-
-
-
-
-
-
-
 
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -75,7 +8,7 @@ import SearchResults from './pages/search';
 function App() {
   const [products, setProducts] = useState([]);
   const [isMobile, setIsMobile] = useState(false);
-  const [, setCartDetails] = useState<any>([]);
+  const [cartDetails, setCartDetails] = useState<any[]>([]);
   useEffect(() => {
     fetch('https://fakestoreapi.com/products')
       .then((res) => res.json())
@@ -85,6 +18,10 @@ function App() {
   useEffect(() => {
     console.log('Products:', products);
   }, [products]);
+
+  useEffect(()=>{
+    console.log(cartDetails)
+  },[cartDetails])
 
   useEffect(() => {
     const handleResize = () => {
@@ -99,6 +36,9 @@ function App() {
     };
   }, []);
 
+  function handleAddToCart(){
+
+  }
   useEffect(() => {
     console.log('Is Mobile:', isMobile);
   }, [isMobile]);
@@ -113,8 +53,8 @@ function App() {
           />
 
 
-          <Route path="/cart" element={<CartPage />} />
-          <Route path="/cart-details" element={<CartDetails />} />
+          <Route path="/cart-details" element={<CartPage setCartDetails={setCartDetails} cartDetails={cartDetails}/>} />
+          {/* <Route path="/cart-details" element={<CartDetails cartDetails={cartDetails}  />} /> */}
           <Route path="/search" element={<SearchResults />} />
           {/* Cart page displaying all items added */}
           {/* <Route path="/cart" element={<CartPage cartDetails={cartDetails} />} /> */}

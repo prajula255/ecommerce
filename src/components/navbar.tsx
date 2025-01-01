@@ -225,7 +225,7 @@ const NavBar: FC = () => {
 
           {/* Cart and Become a Seller Links */}
           <Nav className="justify-content-end flex-grow-1" style={{ marginLeft: '50px', fontWeight: 'bolder' }}>
-            <Nav.Link as={NavLink} to="/cart">
+            <Nav.Link as={NavLink} to="/cart-Details">
               <i className="fa-solid fa-cart-shopping"></i> Cart
             </Nav.Link>
           </Nav>

@@ -107,7 +107,7 @@
 
 
 import Card from 'react-bootstrap/Card';
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
@@ -122,15 +122,15 @@ const truncateTitle = (title: string, maxLength: number): string => {
 };
 
 const Cardeg: FC<CardegProps> = ({ product, setCartDetails, setFavorites }) => {
-  const { image, title } = product;
-  const navigate = useNavigate();
+  
+  // const navigate = useNavigate();
 
   // Function to add product to cart
   const handleAddToCart = () => {
     if (setCartDetails) {
-      setCartDetails(product);
+      setCartDetails((prev:any) => [...prev, product]); // Correctly spread the previous state
     }
-    navigate('/cart-details', { state: { product } });
+    // navigate('/cart-details'); // Navigate to the cart details page
   };
 
   // Function to add product to favorites
@@ -138,19 +138,22 @@ const Cardeg: FC<CardegProps> = ({ product, setCartDetails, setFavorites }) => {
     if (setFavorites) {
       setFavorites(product);
     }
-    alert(`${title} added to favorites!`);
+    alert(`${product.title} added to favorites!`);
   };
+  useEffect(()=>{
+    console.log(product)
+  },[product])
 
   return (
     <Card style={{ width: '18rem' }}>
       <Card.Img
         variant="top"
-        src={image}
+        src={product.image}
         style={{ height: '200px', width: '100%', padding: '10px' }}
       />
       <Card.Body>
         <Card.Title style={{ fontSize: '16px' }}>
-          {truncateTitle(title, 20)}
+          {truncateTitle(product.title, 20)}
         </Card.Title>
         <div style={{ display: 'flex', gap: '10px' }}>
           <Button variant="primary" onClick={handleAddToCart}>
