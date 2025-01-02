@@ -7,9 +7,12 @@ import NavBar from '../components/navbar';
 interface EkartPageProps {
   products: string[],
   setCartDetails: (value: any) => void
+  cartDetails:any[]
+  id:number[]
+  setId:(value:any)=>void
 }
 
-const EkartPage: FC<EkartPageProps> = ({ products, setCartDetails }) => {
+const EkartPage: FC<EkartPageProps> = ({ products, setCartDetails,cartDetails,id,setId }) => {
 
   return (
     <>
@@ -19,7 +22,7 @@ const EkartPage: FC<EkartPageProps> = ({ products, setCartDetails }) => {
           products.length > 0 ?
             products.map((item: string, index: number) => (
               <div className=" p-2" >
-                <Cardeg key={index + "product"} product={item} setCartDetails={setCartDetails} />
+                <Cardeg key={index + "product"} product={item} setCartDetails={setCartDetails} cartDetails={cartDetails} id={id} setId={setId}/>
               </div>
             )) :
             (
@@ -37,3 +40,5 @@ const EkartPage: FC<EkartPageProps> = ({ products, setCartDetails }) => {
 };
 
 export default EkartPage;
+
+

@@ -1,8 +1,4 @@
 
-
-
-
-
 import { FC } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 interface CartDetailsProps{
@@ -19,7 +15,7 @@ const CartDetails: FC<CartDetailsProps> = ({cartDetails}) => {
 
   const handleAddToCart = () => {
     
-    navigate('/cart', { state: { cartDetails } }); // Redirect to cart page
+    navigate('/cart', { state: { cartDetails } }); 
   };
 console.log(cartDetails)
   return (
@@ -28,13 +24,12 @@ console.log(cartDetails)
         <div>
            <h1>Product Details</h1>
       <img
-        src={produc.image}
+        src={product.image}
         alt={product.title}
         style={{ width: '200px', height: '200px' }}
       />
       <h2>{product.title}</h2>
       <p>{product.description}</p>
-      {/* <p>Price: ${product.price}</p> */}
       <button onClick={handleAddToCart}>Add to Cart</button>
         </div>
       }
