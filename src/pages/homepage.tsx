@@ -12,7 +12,7 @@ interface EkartPageProps {
   setId:(value:any)=>void
 }
 
-const EkartPage: FC<EkartPageProps> = ({ products, setCartDetails,cartDetails,id,setId }) => {
+const EkartPage: FC<EkartPageProps> = ({ products, setCartDetails,cartDetails}) => {
 
   return (
     <>
@@ -22,7 +22,7 @@ const EkartPage: FC<EkartPageProps> = ({ products, setCartDetails,cartDetails,id
           products.length > 0 ?
             products.map((item: string, index: number) => (
               <div className=" p-2" >
-                <Cardeg key={index + "product"} product={item} setCartDetails={setCartDetails} cartDetails={cartDetails} id={id} setId={setId}/>
+                <Cardeg key={index + "product"} product={item} setCartDetails={setCartDetails} cartDetails={cartDetails}  />
               </div>
             )) :
             (

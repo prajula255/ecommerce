@@ -79,7 +79,7 @@ const CartPage: FC<CartPageProps> = ({ cartDetails }) => {
         <div className="d-flex flex-wrap justify-content-around flex-row container">
           {cartDetails.map((item, index) => (
             <div className="p-2" key={index}>
-              <Cardeg product={item} showActions={false} /> {/* Disable buttons */}
+              <Cardeg product={item}  /> {/* Disable buttons */}
             </div>
           ))}
         </div>

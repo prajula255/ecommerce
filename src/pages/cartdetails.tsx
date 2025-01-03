@@ -20,7 +20,7 @@ const CartDetails: FC<CartDetailsProps> = ({cartDetails}) => {
 console.log(cartDetails)
   return (
     <div>
-      {
+      {/* {
         <div>
            <h1>Product Details</h1>
       <img
@@ -32,7 +32,7 @@ console.log(cartDetails)
       <p>{product.description}</p>
       <button onClick={handleAddToCart}>Add to Cart</button>
         </div>
-      }
+      } */}
       
     </div>
   );

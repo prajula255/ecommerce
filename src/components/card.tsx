@@ -1,5 +1,5 @@
 import Card from 'react-bootstrap/Card';
-import { FC, useEffect } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 
 
@@ -8,33 +8,42 @@ interface CardegProps {
   setCartDetails?: (value: any) => void;
   setFavorites?: (product: any) => void;
   cartDetails?: any[]
-  id: number[]
-  setId: (value: number) => void
-}
 
+}
 const truncateTitle = (title: string, maxLength: number): string => {
   return title.length > maxLength ? title.substring(0, maxLength) + '...' : title;
 };
 
-const Cardeg: FC<CardegProps> = ({ product, setCartDetails, setFavorites,cartDetails,id,setId}) => {
-   
+const Cardeg: FC<CardegProps> = ({ product, setCartDetails, setFavorites, cartDetails }) => {
+  const [isAddedToCart, setIsAddedToCart] = useState<Boolean>(false)
 
   useEffect(() => {
 
-    // if (cartDetails?.length > 0) {
-    //   if (product.id !== undefined && id?.includes(product.id)) {
-    //     setShowButton(false)
-    //   }
-    // }
-    console.log("qwe"+id)
-  }, [id, cartDetails])
+    if (Array.isArray(cartDetails)) {
+      // if (product.id !== undefined && id?.includes(product.id)) {
+      //   setShowButton(false)
+      // }
+      cartDetails.map((item) => {
+        if (item.id === product.id) {
+          // alert(product.title)
+        }
+      })
+    }
+    console.log("qwe")
+  }, [cartDetails])
 
   const handleAddToCart = () => {
-    if (id !== undefined && setCartDetails) {
+    if (setCartDetails) {
       setCartDetails((prev: any) => [...prev, product]);
-      setId(product.id)
+
     }
   };
+
+  useEffect(() => {
+    if (cartDetails?.includes(product)) {
+      setIsAddedToCart(true)
+    }
+  }, [cartDetails])
 
   const handleAddToFavorites = () => {
     if (setFavorites) {
@@ -43,7 +52,7 @@ const Cardeg: FC<CardegProps> = ({ product, setCartDetails, setFavorites,cartDet
     alert(`${product.title} added to favorites!`);
   };
   useEffect(() => {
-    console.log("product::",product)
+    console.log("product::", product)
   }, [product])
 
   return (
@@ -57,24 +66,32 @@ const Cardeg: FC<CardegProps> = ({ product, setCartDetails, setFavorites,cartDet
         <Card.Title style={{ fontSize: '16px' }}>
           {truncateTitle(product.title, 20)}
         </Card.Title>
-        {
-          setCartDetails && 
-          <div style={{ display: 'flex', gap: '10px' }}>
-          <Button variant="primary" onClick={handleAddToCart}>
-            Add to cart
-          </Button>
+        <div className='d-flex justify-content-center gap-2'>
+          {
+            setCartDetails && isAddedToCart ?
+              <Button className='btn-warning'>Added to cart</Button>
+
+
+
+              :
+              setCartDetails &&
+              <Button variant="primary" onClick={handleAddToCart}>
+                Add to cart
+              </Button>
+
+          }
+
           <Button variant="primary" onClick={handleAddToFavorites}>
             Add to favorite
           </Button>
-        </div>}
+        </div>
+
+        <div style={{ display: 'flex', gap: '10px' }}></div>
       </Card.Body>
     </Card>
   );
 };
 
 export default Cardeg;
-
-
-
 
 
