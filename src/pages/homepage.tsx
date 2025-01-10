@@ -66,7 +66,7 @@
 
 
 
-import { FC, useEffect, useState } from 'react';
+import { FC} from 'react';
 import FooterC from '../components/footer';
 import Cardeg from '../components/card';
 import NavBar from '../components/navbar';
