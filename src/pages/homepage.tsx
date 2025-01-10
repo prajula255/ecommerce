@@ -70,9 +70,9 @@ import { FC, useEffect, useState } from 'react';
 import FooterC from '../components/footer';
 import Cardeg from '../components/card';
 import NavBar from '../components/navbar';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../redux/store/store';
-import { decrement, increment, updatePlace } from '../redux/slice/slice';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { RootState } from '../redux/store/store';
+// import { decrement, increment, updatePlace } from '../redux/slice/slice';
 
 interface Product {
   id: number,
@@ -90,13 +90,13 @@ interface EkartPageProps {
 }
 
 const EkartPage: FC<EkartPageProps> = ({ products, setCartDetails, cartDetails }) => {
-  const count = useSelector((state: RootState) => state.counter.value);
-  const dispatch = useDispatch();
-  const age = useSelector((state: RootState) => state.counter.age);
-  const place = useSelector((state: RootState) => state.counter.place);
-  const [places, setPlaces] = useState<string>("");
+  // const count = useSelector((state: RootState) => state.counter.value);
+  // const dispatch = useDispatch();
+  // const age = useSelector((state: RootState) => state.counter.age);
+  // const place = useSelector((state: RootState) => state.counter.place);
+  // const [places, setPlaces] = useState<string>("");
 
-  // Sort products by price in ascending order
+  // // Sort products by price in ascending order
   const sortedProducts = [...products].sort((a, b) => a.price - b.price);
 
   return (
