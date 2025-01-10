@@ -3,35 +3,33 @@ import { useLocation } from 'react-router-dom';
 
 const SearchResults: FC = () => {
     const location = useLocation();
-    const query = new URLSearchParams(location.search).get('query'); // Get search query from URL
-    const [, setProducts] = useState<any[]>([]); // State for storing products
-    const [filteredProducts, setFilteredProducts] = useState<any[]>([]); // State for filtered products
-    const [loading, setLoading] = useState<boolean>(false); // Loading state
-    const [error, setError] = useState<string | null>(null); // Error state
+    const query = new URLSearchParams(location.search).get('query');
+    const [, setProducts] = useState<any[]>([]);
+    const [filteredProducts, setFilteredProducts] = useState<any[]>([]);
+    const [loading, setLoading] = useState<boolean>(false);
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         if (query) {
             setLoading(true);
-            setError(null); // Reset errors
+            setError(null);
 
-            // Fetch products from the API
             fetch('https://fakestoreapi.com/products')
                 .then((res) => res.json())
                 .then((json) => {
-                    setProducts(json); // Set all products
-                    // Filter products based on the query
+                    setProducts(json);
                     const filtered = json.filter((product: any) =>
                         product.title.toLowerCase().includes(query.toLowerCase())
                     );
-                    setFilteredProducts(filtered); // Set filtered products
-                    setLoading(false); // Set loading to false after data is fetched
+                    setFilteredProducts(filtered);
+                    setLoading(false);
                 })
                 .catch(() => {
                     setError('Failed to fetch products. Please try again later.');
                     setLoading(false);
                 });
         }
-    }, [query]); // Dependency on query so it triggers when the query changes
+    }, [query]);
 
     return (
         <div>
@@ -51,7 +49,6 @@ const SearchResults: FC = () => {
                                 style={{ width: '100px', height: 'auto' }}
                             />
                             <p>{product.description}</p>
-                            {/* Add other product details as needed */}
                         </li>
                     ))}
                 </ul>
@@ -63,3 +60,8 @@ const SearchResults: FC = () => {
 };
 
 export default SearchResults;
+
+
+
+
+

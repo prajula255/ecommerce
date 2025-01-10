@@ -8,7 +8,6 @@ interface CardegProps {
   setCartDetails?: (value: any) => void;
   setFavorites?: (product: any) => void;
   cartDetails?: any[]
-
 }
 const truncateTitle = (title: string, maxLength: number): string => {
   return title.length > maxLength ? title.substring(0, maxLength) + '...' : title;
@@ -20,12 +19,9 @@ const Cardeg: FC<CardegProps> = ({ product, setCartDetails, setFavorites, cartDe
   useEffect(() => {
 
     if (Array.isArray(cartDetails)) {
-      // if (product.id !== undefined && id?.includes(product.id)) {
-      //   setShowButton(false)
-      // }
+
       cartDetails.map((item) => {
         if (item.id === product.id) {
-          // alert(product.title)
         }
       })
     }
@@ -86,7 +82,9 @@ const Cardeg: FC<CardegProps> = ({ product, setCartDetails, setFavorites, cartDe
           </Button>
         </div>
 
-        <div style={{ display: 'flex', gap: '10px' }}></div>
+        <div>
+          <p>${product.price}</p>
+        </div>
       </Card.Body>
     </Card>
   );

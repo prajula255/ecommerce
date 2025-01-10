@@ -5,11 +5,20 @@ import EkartPage from './pages/homepage';
 import CartPage from './pages/cartpage';
 // import CartDetails from './pages/cartdet';
 import SearchResults from './pages/search';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateIsMobile } from './redux/slice/slice';
+import { RootState } from './redux/store/store';
 function App() {
+  const dispatch = useDispatch()
   const [products, setProducts] = useState([]);
-  const [isMobile, setIsMobile] = useState(false);
+  // const [isMobile, setIsMobile] = useState(false);
+
+
+  const isMobile = useSelector((state: RootState)=>state.counter.isMobile)
+
+
   const [cartDetails, setCartDetails] = useState<any[]>([]);
-  const[id,setId]=useState<number[]>([])
+  const [id, setId] = useState<number[]>([])
   useEffect(() => {
     fetch('https://fakestoreapi.com/products')
       .then((res) => res.json())
@@ -26,7 +35,9 @@ function App() {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
+      if (document.documentElement.clientWidth <= 600) {
+        dispatch(updateIsMobile(true))
+      }
     };
 
     handleResize();
@@ -37,9 +48,9 @@ function App() {
     };
   }, []);
 
- 
+
   useEffect(() => {
-    console.log('Is Mobile:', isMobile);
+    console.log(' Is Mobile: ', isMobile);
   }, [isMobile]);
 
   return (
