@@ -21,9 +21,9 @@ const CartPage: FC<CartPageProps> = ({ cartDetails }) => {
         <div className="d-flex flex-wrap justify-content-around flex-column container">
           <div>
             <h4>Price Details</h4>
-            <div><p>Price:({cartDetails.length}items):${totalPrice}</p>
+            <div><p>Price:({cartDetails.length}items):${totalPrice.toFixed(2)}</p>
               <p>Delivery charges:${deliveryCharge}</p>
-              <p>Total Amount:${total}</p></div>
+              <p>Total Amount:${total.toFixed(2)}</p></div>
           </div>
           {cartDetails.map((item, index) => (
             <div className="p-2" key={index}>

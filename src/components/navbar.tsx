@@ -15,7 +15,7 @@ const NavBar: FC = () => {
   const handleSearch = (event: React.FormEvent) => {
     event.preventDefault();
     if (searchTerm.trim()) {
-      navigate(`/search?query=${searchTerm}`);
+      navigate(`/search?category=${searchTerm}`);
     }
   };
 

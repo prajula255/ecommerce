@@ -1,16 +1,17 @@
+
 import { FC, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 const SearchResults: FC = () => {
     const location = useLocation();
-    const query = new URLSearchParams(location.search).get('query');
+    const category = new URLSearchParams(location.search).get('category');
     const [, setProducts] = useState<any[]>([]);
     const [filteredProducts, setFilteredProducts] = useState<any[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        if (query) {
+        if (category) {
             setLoading(true);
             setError(null);
 
@@ -19,7 +20,7 @@ const SearchResults: FC = () => {
                 .then((json) => {
                     setProducts(json);
                     const filtered = json.filter((product: any) =>
-                        product.title.toLowerCase().includes(query.toLowerCase())
+                        product.category.toLowerCase() === category.toLowerCase()
                     );
                     setFilteredProducts(filtered);
                     setLoading(false);
@@ -29,11 +30,11 @@ const SearchResults: FC = () => {
                     setLoading(false);
                 });
         }
-    }, [query]);
+    }, [category]);
 
     return (
         <div>
-            <h1>Search Results for "{query}"</h1>
+            <h1>Search Results for Category "{category}"</h1>
 
             {loading && <p>Loading...</p>}
             {error && <p>{error}</p>}
@@ -53,15 +54,12 @@ const SearchResults: FC = () => {
                     ))}
                 </ul>
             ) : (
-                !loading && <p>No products found matching "{query}".</p>
+                !loading && <p>No products found in category "{category}".</p>
             )}
         </div>
     );
 };
 
 export default SearchResults;
-
-
-
 
 

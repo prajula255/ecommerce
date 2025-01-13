@@ -66,7 +66,7 @@
 
 
 
-import { FC} from 'react';
+import { FC } from 'react';
 import FooterC from '../components/footer';
 import Cardeg from '../components/card';
 import NavBar from '../components/navbar';
@@ -78,7 +78,7 @@ interface Product {
   id: number,
   name: string,
   price: number,
-  description:string,
+  description: string,
 }
 
 interface EkartPageProps {
