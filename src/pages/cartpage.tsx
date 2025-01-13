@@ -10,7 +10,6 @@ const CartPage: FC<CartPageProps> = ({ cartDetails }) => {
   const deliveryCharge = totalPrice > 0 ? 10 : 0
   const total = totalPrice + deliveryCharge
 
-
   // order handling
   const handleOrder = (product: any) => {
     if (cartDetails.length > 0) {
@@ -22,15 +21,12 @@ const CartPage: FC<CartPageProps> = ({ cartDetails }) => {
     }
   };
 
-
-
   return (
     <div>
       <h1>Cart Details</h1>
       {cartDetails.length === 0 ? (
         <p>No items in the cart.</p>
       ) : (
-
 
         <div className="d-flex flex-wrap justify-content-around flex-column container">
           <div>
@@ -39,13 +35,15 @@ const CartPage: FC<CartPageProps> = ({ cartDetails }) => {
               <p>Delivery charges:${deliveryCharge}</p>
               <p>Total Amount:${total.toFixed(2)}</p></div>
           </div>
+
+
           {cartDetails.map((item, index) => (
             <div className="p-2" key={index}>
               <Cardeg product={item} /> {/* Disable buttons */}
 
-              <button className='btn btn-success mt-2' onClick={handleOrder}>Order</button>
             </div>
           ))}
+          <div><button className='btn btn-success mt-2' onClick={handleOrder}>Order</button></div>
 
         </div>
       )}

@@ -62,10 +62,6 @@
 
 
 
-
-
-
-
 import { FC } from 'react';
 import FooterC from '../components/footer';
 import Cardeg from '../components/card';

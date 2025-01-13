@@ -6,6 +6,7 @@ interface CardegProps {
   setCartDetails?: (value: any) => void;
   setFavorites?: (product: any) => void;
   cartDetails?: any[];
+  
 }
 const truncateTitle = (title: string, maxLength: number): string => {
   return title.length > maxLength ? title.substring(0, maxLength) + '...' : title;
@@ -49,8 +50,6 @@ const Cardeg: FC<CardegProps> = ({ product, setCartDetails, setFavorites, cartDe
     console.log("product::", product)
   }, [product])
 
-
-
   return (
     <Card style={{ width: '18rem' }}>
       <Card.Img
@@ -76,6 +75,7 @@ const Cardeg: FC<CardegProps> = ({ product, setCartDetails, setFavorites, cartDe
           <Button variant="primary" onClick={handleAddToFavorites}>
             Add to favorite
           </Button>
+
         </div>
         <div>
           <p>${product.price}</p>
