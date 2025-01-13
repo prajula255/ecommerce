@@ -10,6 +10,20 @@ const CartPage: FC<CartPageProps> = ({ cartDetails }) => {
   const deliveryCharge = totalPrice > 0 ? 10 : 0
   const total = totalPrice + deliveryCharge
 
+
+  // order handling
+  const handleOrder = (product: any) => {
+    if (cartDetails.length > 0) {
+      console.log('Order placed for:', cartDetails);
+      alert('Order placed successfully!');
+
+    } else {
+      alert('No items in the cart to place an order.');
+    }
+  };
+
+
+
   return (
     <div>
       <h1>Cart Details</h1>
@@ -28,8 +42,11 @@ const CartPage: FC<CartPageProps> = ({ cartDetails }) => {
           {cartDetails.map((item, index) => (
             <div className="p-2" key={index}>
               <Cardeg product={item} /> {/* Disable buttons */}
+
+              <button className='btn btn-success mt-2' onClick={handleOrder}>Order</button>
             </div>
           ))}
+
         </div>
       )}
     </div>

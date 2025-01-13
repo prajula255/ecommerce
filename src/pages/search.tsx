@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 
 const SearchResults: FC = () => {
     const location = useLocation();
+    // category based searching 
     const category = new URLSearchParams(location.search).get('category');
     const [, setProducts] = useState<any[]>([]);
     const [filteredProducts, setFilteredProducts] = useState<any[]>([]);
