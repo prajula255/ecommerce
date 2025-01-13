@@ -11,7 +11,7 @@ const CartPage: FC<CartPageProps> = ({ cartDetails }) => {
   const total = totalPrice + deliveryCharge
 
   // order handling
-  const handleOrder = (product: any) => {
+  const handleOrder = () => {
     if (cartDetails.length > 0) {
       console.log('Order placed for:', cartDetails);
       alert('Order placed successfully!');
