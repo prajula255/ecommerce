@@ -116,7 +116,7 @@ const SearchResults: FC = () => {
             {error && <p>{error}</p>}
 
             {filteredProducts.length > 0 ? (
-                <div className="d-flex flex-wrap justify-content-around">
+                <div className="d-flex">
                     {filteredProducts.map((product) => (
                         <div className="p-2" key={product.id}>
                             <Cardeg

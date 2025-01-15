@@ -6,6 +6,8 @@ export interface CounterState {
     age: number,
     place: string,
     isMobile: boolean,
+    searchText: string,
+    isSearch: boolean
 }
 
 const initialState: CounterState = {
@@ -13,6 +15,8 @@ const initialState: CounterState = {
     age: 26,
     place: "knr",
     isMobile: false,
+    searchText: "",
+    isSearch: false
 }
 
 export const counterSlice = createSlice({
@@ -38,10 +42,13 @@ export const counterSlice = createSlice({
         updateIsMobile: (state, action: PayloadAction<boolean>) => {
             state.isMobile = action.payload
         },
+        updateSearchText: (state, action: PayloadAction<string>) => {
+            state.searchText = action.payload
+        }
     },
 })
 
 // Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount, updatePlace, updateIsMobile } = counterSlice.actions
+export const { increment, decrement, incrementByAmount, updatePlace, updateIsMobile, updateSearchText } = counterSlice.actions
 
 export default counterSlice.reducer

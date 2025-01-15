@@ -6,11 +6,17 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { updateSearchText } from '../redux/slice/slice';
 
 const NavBar: FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate();
+  const dispatch=useDispatch();
+  useEffect(()=>{
+dispatch(updateSearchText(searchTerm))
+  },[searchTerm])
 
   const handleSearch = (event: React.FormEvent) => {
     event.preventDefault();

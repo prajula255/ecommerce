@@ -62,10 +62,14 @@
 
 
 
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 import FooterC from '../components/footer';
 import Cardeg from '../components/card';
 import NavBar from '../components/navbar';
+import { useSelector } from 'react-redux';
+import { RootOptions } from 'react-dom/client';
+import { RootState } from '../redux/store/store';
+import SearchResults from './search';
 // import { useDispatch, useSelector } from 'react-redux';
 // import { RootState } from '../redux/store/store';
 // import { decrement, increment, updatePlace } from '../redux/slice/slice';
@@ -75,6 +79,7 @@ interface Product {
   name: string,
   price: number,
   description: string,
+  title: string
 }
 
 interface EkartPageProps {
@@ -92,9 +97,20 @@ const EkartPage: FC<EkartPageProps> = ({ products, setCartDetails, cartDetails }
   // const place = useSelector((state: RootState) => state.counter.place);
   // const [places, setPlaces] = useState<string>("");
 
-  // // Sort products by price in ascending order
+  // Sort products by price in ascending order
   const sortedProducts = [...products].sort((a, b) => a.price - b.price);
+  const searchText = useSelector((state: RootState) => state.counter.searchText)
+  const [searchResults, setSearchResults] = useState<Product[]>([])
 
+  useEffect(() => {
+    setSearchResults(products.filter((item) =>
+      item.title.toLowerCase().includes(searchText.toLowerCase()) ||
+      item.description.toLowerCase().includes(searchText.toLowerCase())))
+  }, [searchText])
+
+  useEffect(() => {
+    console.log(searchResults)
+  }, [SearchResults])
   return (
     <>
       <NavBar />
