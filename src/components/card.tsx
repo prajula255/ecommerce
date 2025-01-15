@@ -6,7 +6,7 @@ interface CardegProps {
   setCartDetails?: (value: any) => void;
   setFavorites?: (product: any) => void;
   cartDetails?: any[];
-  
+
 }
 const truncateTitle = (title: string, maxLength: number): string => {
   return title.length > maxLength ? title.substring(0, maxLength) + '...' : title;

@@ -44,7 +44,6 @@ const CartPage: FC<CartPageProps> = ({ cartDetails }) => {
             </div>
           ))}
           <div><button className='btn btn-success mt-2' onClick={handleOrder}>Order</button></div>
-
         </div>
       )}
     </div>
