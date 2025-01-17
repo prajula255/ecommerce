@@ -2,9 +2,10 @@ import { FC } from 'react';
 import Cardeg from '../components/card';
 interface CartPageProps {
   cartDetails: any[];
+  setCartDetails: (cart: any[]) => void;
 }
 
-const CartPage: FC<CartPageProps> = ({ cartDetails }) => {
+const CartPage: FC<CartPageProps> = ({ cartDetails, setCartDetails }) => {
 
   const totalPrice = cartDetails.reduce((acc, item) => acc + item.price, 0)
   const deliveryCharge = totalPrice > 0 ? 10 : 0
@@ -21,6 +22,12 @@ const CartPage: FC<CartPageProps> = ({ cartDetails }) => {
     }
   };
 
+  // remove from cart
+  const handleRemove = (itemRemove: any) => {
+    const updatedCartDetails = cartDetails.filter(item => item.id !== itemRemove.id);
+    setCartDetails(updatedCartDetails);
+    alert(`${itemRemove.title} removed from cart!`);
+  }
   return (
     <div>
       <h1>Cart Details</h1>
@@ -40,7 +47,7 @@ const CartPage: FC<CartPageProps> = ({ cartDetails }) => {
           {cartDetails.map((item, index) => (
             <div className="p-2" key={index}>
               <Cardeg product={item} /> {/* Disable buttons */}
-
+              <button className='btn btn-danger mt-2' onClick={() => handleRemove(item)}>Remove</button>
             </div>
           ))}
           <div><button className='btn btn-success mt-2' onClick={handleOrder}>Order</button></div>

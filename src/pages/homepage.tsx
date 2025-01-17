@@ -108,8 +108,6 @@ const EkartPage: FC<EkartPageProps> = ({ products, setCartDetails, cartDetails }
     return matchingProducts;
   }
 
-
-
   return (
     <>
       <NavBar />
