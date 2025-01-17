@@ -74,7 +74,7 @@ const SearchResults: FC = () => {
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
     const [cartDetails, setCartDetails] = useState<any[]>([]);
-    const [favourites, setFavorites] = useState<any[]>([]);
+    const [, setFavorites] = useState<any[]>([]);
 
     useEffect(() => {
         if (category) {
