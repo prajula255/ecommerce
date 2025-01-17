@@ -62,13 +62,13 @@
 
 
 
-import { FC, useEffect, useState } from 'react';
+import { FC } from 'react';
 import FooterC from '../components/footer';
 import Cardeg from '../components/card';
 import NavBar from '../components/navbar';
 import { useSelector } from 'react-redux';
 import { RootState } from '../redux/store/store';
-import SearchResults from './search';
+// import SearchResults from './search';
 // import { useDispatch, useSelector } from 'react-redux';
 // import { RootState } from '../redux/store/store';
 // import { decrement, increment, updatePlace } from '../redux/slice/slice';
