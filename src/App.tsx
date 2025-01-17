@@ -14,7 +14,7 @@ function App() {
   // const [isMobile, setIsMobile] = useState(false);
 
 
-  const isMobile = useSelector((state: RootState)=>state.counter.isMobile)
+  const isMobile = useSelector((state: RootState) => state.counter.isMobile)
 
 
   const [cartDetails, setCartDetails] = useState<any[]>([]);
@@ -64,7 +64,9 @@ function App() {
 
           <Route
             path="/cart-details"
-            element={<CartPage cartDetails={cartDetails} />}
+            element={<CartPage cartDetails={cartDetails} setCartDetails={function (cart: any[]): void {
+              throw new Error('Function not implemented.');
+            }} />}
           />
           {/* <Route path="/cart-details" element={<CartPage cartDetails={setCartDetails} cartDetails={cartDetails} />} /> */}
           <Route path="/search" element={<SearchResults />} />
