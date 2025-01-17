@@ -8,15 +8,15 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { FC, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { updateSearchText } from '../redux/slice/slice';
+import { updateIsSearch, updateSearchText } from '../redux/slice/slice';
 
 const NavBar: FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate();
-  const dispatch=useDispatch();
-  useEffect(()=>{
-dispatch(updateSearchText(searchTerm))
-  },[searchTerm])
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(updateSearchText(searchTerm))
+  }, [searchTerm])
 
   const handleSearch = (event: React.FormEvent) => {
     event.preventDefault();
@@ -24,6 +24,18 @@ dispatch(updateSearchText(searchTerm))
       navigate(`/search?category=${searchTerm}`);
     }
   };
+
+  useEffect(() => {
+    dispatch(updateSearchText(searchTerm))
+  }, [searchTerm])
+
+  useEffect(() => {
+    if (searchTerm == "") {
+      dispatch(updateIsSearch(false))
+    } else {
+      dispatch(updateIsSearch(true))
+    }
+  }, [searchTerm])
 
   return (
     <>

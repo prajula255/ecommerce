@@ -44,11 +44,14 @@ export const counterSlice = createSlice({
         },
         updateSearchText: (state, action: PayloadAction<string>) => {
             state.searchText = action.payload
-        }
+        },
+        updateIsSearch: (state, action: PayloadAction<boolean>) => {
+            state.isSearch = action.payload
+        },
+
     },
 })
 
-// Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount, updatePlace, updateIsMobile, updateSearchText } = counterSlice.actions
+export const { increment, decrement, incrementByAmount, updatePlace, updateIsMobile, updateSearchText, updateIsSearch } = counterSlice.actions
 
 export default counterSlice.reducer

@@ -67,7 +67,6 @@ import FooterC from '../components/footer';
 import Cardeg from '../components/card';
 import NavBar from '../components/navbar';
 import { useSelector } from 'react-redux';
-import { RootOptions } from 'react-dom/client';
 import { RootState } from '../redux/store/store';
 import SearchResults from './search';
 // import { useDispatch, useSelector } from 'react-redux';
@@ -99,38 +98,59 @@ const EkartPage: FC<EkartPageProps> = ({ products, setCartDetails, cartDetails }
 
   // Sort products by price in ascending order
   const sortedProducts = [...products].sort((a, b) => a.price - b.price);
-  const searchText = useSelector((state: RootState) => state.counter.searchText)
-  const [searchResults, setSearchResults] = useState<Product[]>([])
+  const { searchText, isSearch } = useSelector((state: RootState) => state.counter)
 
-  useEffect(() => {
-    setSearchResults(products.filter((item) =>
+
+  const searchResults = (products: Product[], searchText: string) => {
+    const matchingProducts = products.filter((item) =>
       item.title.toLowerCase().includes(searchText.toLowerCase()) ||
-      item.description.toLowerCase().includes(searchText.toLowerCase())))
-  }, [searchText])
+      item.description.toLowerCase().includes(searchText.toLowerCase()))
+    return matchingProducts;
+  }
 
-  useEffect(() => {
-    console.log(searchResults)
-  }, [SearchResults])
+
+
   return (
     <>
       <NavBar />
-      <div className="d-flex flex-wrap justify-content-around flex-row container">
-        {sortedProducts.length > 0 ? (
-          sortedProducts.map((item: Product, index: number) => (
-            <div className="p-2" key={item.id || index}>
-              <Cardeg
-                product={item}
-                setCartDetails={setCartDetails}
-                cartDetails={cartDetails}
-              />
-            </div>
-          ))
-        ) : (
-          <div>
-            <p>No products available</p>
+      {
+        !isSearch ?
+          <div className="d-flex flex-wrap justify-content-around flex-row container">
+            {
+              sortedProducts.length > 0 ? (
+                sortedProducts.map((item: Product, index: number) => (
+                  <div className="p-2" key={item.id || index}>
+                    <Cardeg
+                      product={item}
+                      setCartDetails={setCartDetails}
+                      cartDetails={cartDetails}
+                    />
+                  </div>
+                ))
+              ) : (
+                <div>
+                  <p>No products available</p>
+                </div>
+              )
+            }
           </div>
-        )}
-      </div>
+          :
+          <div className="d-flex flex-wrap justify-content-around flex-row container">
+            {
+              searchResults(products, searchText).length > 0 ?
+                searchResults(products, searchText).map((item: Product, index: number) => (
+                  <div className="p-2" key={item.id || index}>
+                    <Cardeg
+                      product={item}
+                      setCartDetails={setCartDetails}
+                      cartDetails={cartDetails}
+                    />
+                  </div>))
+                :
+                <p>No Search Results Found.</p>
+            }
+          </div>
+      }
       <footer>
         <FooterC />
       </footer>
